@@ -14,6 +14,4 @@ function User(CFC, License){
 	};
 };
 
-var User = ;
-
 module.exports = User;
