@@ -8,8 +8,8 @@ function User(CFC, License){
 		birth 	 : Date,
 		id 		 : Number,
 		password : String,
-		cfc		 : CFC,
-		license	 : License
+		cfc		 : [CFC],
+		license	 : [License]
 
 	};
 };

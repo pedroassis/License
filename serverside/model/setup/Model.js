@@ -1,17 +1,18 @@
 
 
-function Model(ClassLoader, SchemaBuilder, Mongoose, SchemaProxy){
+function Model(ClassLoader, SchemaBuilder, mongoose, SchemaProxy, container){
 
-    this.getAll = () => ClassLoader
-                            .getAll('model/entity/')
-                            .sort((a, b) => a.length < b.length)
-                            .map((model) => SchemaBuilder.build(model));
+    this.getAll = function(){
+        return SchemaBuilder.build(ClassLoader.getAll('/../model/entity'));
+    };
 
-    this.setup = (container) => {
-        for(let [name, schema] of this.getAll()){
-            container.service(name, () => SchemaProxy.proxify(schema));
-        }
-    }
+    this.setup = function() {
+        this.getAll().forEach(function(item){            
+            container.service(item.name, function(){
+                return SchemaProxy.proxify(item.schema);
+            });
+        });
+    };
 
 }
 

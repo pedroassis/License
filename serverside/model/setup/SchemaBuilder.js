@@ -2,33 +2,45 @@
 
 function SchemaBuilder(Schema, ObjectId, $injector){
 
-    function* entries(obj) {
-       for (let key of Object.keys(obj)) {
-         yield [key, obj[key]];
-       }
-    }
+    var locals = {};
 
-    this.build = (modelGetter, name) => {
+    var lookup = {
+        false : function(relation){
+            return {
+                type    : ObjectId,
+                ref     : relation[0]
+            }
+        },
+        true : function(relation){
+            return relation;
+        }
+    };
+
+    this.build = function(models){
         var schema = {};
 
-        var model = $injector.invoke(modelGetter);
+        models.forEach(function(modelGetter){
+            locals[modelGetter.name] = modelGetter;
+        });
 
-        var lookup = {
-            true : (relation) => ({
-                type    : ObjectId,
-                ref     : relation.name
-            }),
-            false : (relation) => relation;
-        };
+        return models.map(function(modelGetter){
+            locals[modelGetter.name] = modelGetter;
 
-        for (let [key, value] of entries(model)) {
-            schema[key] = lookup[Function.isFunction(value)](value);
-        }
+            var model = $injector.invoke(modelGetter, null, locals);
 
-        return {
-            schema : new Schema(schema),
-            name : name
-        };
+            Object.keys(model).forEach(function(key){
+                schema[key] = lookup[model[key] instanceof Function](model[key]);
+            });
+
+            var schemaBuilt = new Schema(schema);
+
+            locals[modelGetter.name] = modelGetter;
+
+            return {
+                schema : schemaBuilt,
+                name : modelGetter.name
+            };
+        });
     }
 
 }

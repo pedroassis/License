@@ -1,14 +1,14 @@
 
 
-function ClassLoader(rootFolder) {
+function ClassLoader(rootFolder, fs) {
 
     this.rootFolder = rootFolder;
 
-    this.getAll = folder => {
+    this.getAll = function(folder){
 
     	var files = getFiles(rootFolder + folder);
 
-    	return files.map(x => {
+    	return files.map(function(x){
     		return require(x);
     	});
     }

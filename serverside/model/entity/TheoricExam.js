@@ -1,12 +1,12 @@
 
-function TheoricExam(User){
+function TheoricExam(User, Address){
 	return {
 
 		date 		: Date,
-		address 	: Address,
+		address 	: [Address],
 		points		: Number,
 		pontuation 	: Number,
-		user 		: User
+		user 		: [User]
 
 	};
 };

@@ -1,0 +1,40 @@
+{
+    "models" : [
+        {
+            "wrap"      : true,
+            "require"   : "mongoose" 
+        },
+        {   
+            "wrap" : true,
+            "require" : "fs" 
+        },
+        {
+            "wrap" : true,
+            "source" : "mongoose",
+            "name" : "Schema"
+        },
+        {
+            "wrap" : true,
+            "source" : "Schema",
+            "name" : "ObjectId"
+        },
+        {
+            "name" : "ClassLoader",
+            "require" : "../service/ClassLoader"
+        },
+        {
+            "name" : "SchemaBuilder",
+            "require" : "../model/setup/SchemaBuilder"
+        },
+        {
+            "name" : "SchemaProxy",
+            "require" : "../model/setup/SchemaProxy"
+        },
+        {
+            "name" : "Model",
+            "require" : "../model/setup/Model"
+        }
+    ],
+
+    "controllers" : []
+}

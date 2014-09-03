@@ -3,7 +3,7 @@ function CFC(Address){
 	return {
 
 		name 		: String,
-		address 	: Address,
+		address 	: [Address],
 		phones		: Array,
 		users 		: Array
 

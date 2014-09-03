@@ -12,7 +12,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "ng-di": "*"
+    "ng-di": "*",
+    "mongoose": "*"
   },
   "author": "",
   "license": "BSD-2-Clause",
