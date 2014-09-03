@@ -1,6 +1,14 @@
 
 
-function DefaultCRUD(url, Controller){
+function DefaultCRUD(url, Controller, parameters){
+
+    var defaultParameters = [
+        "get:id", "post", "put", "delete", 'get'
+    ];
+
+    var methodBinder = {
+        "get:id" : "getById", "post" : "save", "put" : "update", "delete" : "delete", 'get' : "get"
+    };
 
     this.url = url;
 
@@ -9,6 +17,8 @@ function DefaultCRUD(url, Controller){
     };
 
     this.getById = function(app, resolver, request){
+        var username = request.session.user.username; 
+        var id = app._id; 
         resolver(Controller.getById(id, username));
     };
     
@@ -31,6 +41,12 @@ function DefaultCRUD(url, Controller){
         var username = request.session.user.username;     
         resolver(Controller.delete(id, username));
     };
+
+    defaultParameters.filter(function(parameter){
+        return parameters.indexOf(parameter) === -1;
+    }).forEach(function(parameter){
+        delete this[methodBinder[parameter]];
+    }.bind(this));
 
 }
 

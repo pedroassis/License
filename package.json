@@ -12,8 +12,10 @@
   },
   "license": "ISC",
   "dependencies": {
-    "ng-di": "*",
-    "mongoose": "*"
+    "ng-di"             : "*",
+    "mongoose"          : "3.8.4",
+    "express"           : "3.4.8",
+    "q"                 : "1.0.0"
   },
   "author": "",
   "license": "BSD-2-Clause",

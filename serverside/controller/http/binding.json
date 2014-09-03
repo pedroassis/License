@@ -1,0 +1,12 @@
+{
+
+    "definitions" : [
+        {
+            "url" : "/user",
+            "controller" : "DefaultController",
+            "parameters" : [
+                "get:id", "post", "put", "delete"
+            ]
+        }
+    ]
+}

@@ -27,10 +27,14 @@ function PopulateContainer(dependency, container, type){
 
 application.run(function(container){
 
-    Object.keys(deps).forEach(function(key){
-        deps[key].forEach(function(dependency){
+    Object.keys(deps.dependencies).forEach(function(key){
+        deps.dependencies[key].forEach(function(dependency){
             PopulateContainer(dependency, container, key);
         });
+    });
+
+    deps.setup.forEach(function(configurable){
+        container.locals[configurable].setup();
     });
 
 });
