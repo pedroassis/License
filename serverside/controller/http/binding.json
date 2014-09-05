@@ -1,11 +1,10 @@
 {
-
     "definitions" : [
         {
             "url" : "/user",
-            "controller" : "DefaultController",
+            "model" : "User",
             "parameters" : [
-                "get:id", "post", "put", "delete"
+                "get:id", "post", "put", "delete", "get"
             ]
         }
     ]

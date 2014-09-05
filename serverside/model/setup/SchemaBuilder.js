@@ -1,6 +1,6 @@
 
 
-function SchemaBuilder(Schema, ObjectId, $injector){
+function SchemaBuilder(Schema, ObjectId, $injector, mongoose){
 
     var locals = {};
 
@@ -32,7 +32,7 @@ function SchemaBuilder(Schema, ObjectId, $injector){
                 schema[key] = lookup[model[key] instanceof Function](model[key]);
             });
 
-            var schemaBuilt = new Schema(schema);
+            var schemaBuilt = mongoose.model(modelGetter.name, new Schema(schema));
 
             locals[modelGetter.name] = modelGetter;
 

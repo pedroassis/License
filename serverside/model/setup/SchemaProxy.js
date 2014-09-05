@@ -13,10 +13,10 @@ function SchemaProxy(){
                         });
                     }
                 }
-                return object[property];
+                return model[property];
             },
             set : function(object, property, value) {
-                object[property] = value;
+                model[property] = value;
             }
         });
     }

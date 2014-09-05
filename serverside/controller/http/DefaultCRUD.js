@@ -16,30 +16,28 @@ function DefaultCRUD(url, Controller, parameters){
         return Controller.getAll();
     };
 
-    this.getById = function(app, resolver, request){
-        var username = request.session.user.username; 
+    this.getById = function(app, request){
+        var username = "tester"; 
         var id = app._id; 
-        resolver(Controller.getById(id, username));
+        return (Controller.getById(id));
     };
     
     this.save = function(app, resolver, request){
-        var username = request.session.user.username; 
-        var id = app._id;    
+        var username = "tester"; 
 
-        resolver(Controller.save(id, username));
+        resolver.resolve(Controller.save(app, username));
     };
     
     this.update = function(app, resolver, request){
-        var id = app._id;
-        var username = request.session.user.username;     
+        var username = "tester";      
            
-        resolver(Controller.update(id, username));
+        resolver.resolve(Controller.update(app, username));
     };
     
     this.delete = function(app, resolver, request){
         var id = app._id;
-        var username = request.session.user.username;     
-        resolver(Controller.delete(id, username));
+        var username = "tester";      
+        resolver.resolve(Controller.delete(id, username));
     };
 
     defaultParameters.filter(function(parameter){

@@ -8,6 +8,11 @@
                 "wrap"      : true,
                 "require"   : "mongoose" 
             },
+            {
+                "wrap"      : true,
+                "require"   : "q" ,
+                "name"      : "Q" 
+            },
             {   
                 "wrap" : true,
                 "require" : "fs" 
@@ -41,6 +46,11 @@
         ],
 
         "controllers" : [
+            {
+                "wrap" : true,
+                "name" : "DefaultController",
+                "require" : "../controller/DefaultController"
+            },
             {
                 "wrap" : true,
                 "name" : "DefaultCRUD",
