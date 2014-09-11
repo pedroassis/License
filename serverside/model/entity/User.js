@@ -3,6 +3,7 @@ function User(CFC, License){
 	return {
 
 		name	 : String,
+		email	 : String,
 		username : String,
 		cpf		 : String,
 		birth 	 : Date,

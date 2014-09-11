@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="AE">
     <head>
         <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+        
         <link rel="stylesheet" type="text/css" href="libs/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="libs/css/bootstrap-theme.css">
     </head>
-    <body ng-app>
+    <body>
+
         <section ng-view></section>
-        <script type="text/javascript" scr="libs/js/jquery.js"></script>
-        <script type="text/javascript" scr="libs/js/bootstrap.js"></script>
-        <script type="text/javascript" scr="libs/js/angular.js"></script>
+
+        <script type="text/javascript" src="libs/js/jquery.js"></script>
+        <script type="text/javascript" src="libs/js/bootstrap.js"></script>
+        <script type="text/javascript" src="libs/js/angular.js"></script>
+        <script type="text/javascript" src="libs/js/angular-route.js"></script>
+        <script type="text/javascript" src="libs/js/google-plus-signin.js"></script>
+
+        <!-- Controllers -->
+        <script type="text/javascript" src="js/Controller/LoginController.js"></script>
+        <!-- Services -->
+        <script type="text/javascript" src="js/Service/AuthService.js"></script>
+        <script type="text/javascript" src="js/Service/EventService.js"></script>
+        <script type="text/javascript" src="js/Service/Facebook.js"></script>
+        <script type="text/javascript" src="js/Service/GooglePlus.js"></script>
+        <!-- Project Bootstrap -->
+        <script type="text/javascript" src="js/bootstrap/Routes.js"></script>
+        <script type="text/javascript" src="js/bootstrap/ContainerConfig.js"></script>
     </body>
 </html>
